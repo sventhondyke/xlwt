@@ -1030,6 +1030,11 @@ class Worksheet(object):
 
     def write(self, r, c, label="", style=Style.default_style):
         self.row(r).write(c, label, style)
+        
+    def writerow(self, r, c1, labels=[], style=Style.default_style):
+    	'''Writes a sequence of values to a row starting at column c1'''
+        for c, label in zip(xrange(c1, c1+len(labels)), labels):
+            self.row(r).write(c, label, style)
 
     def write_rich_text(self, r, c, rich_text_list, style=Style.default_style):
         self.row(r).set_cell_rich_text(c, rich_text_list, style)
